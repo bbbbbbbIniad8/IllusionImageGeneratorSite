@@ -16,8 +16,15 @@ function createStripCanvas(width, height) {
 
 function create4K(originalImage){
     const canvas = document.createElement('canvas');
-    const newWidth = 4000;
-    const newHeight = Number((newWidth/originalImage.width) * originalImage.height);
+    let newWidth;
+    let newHeight
+    if (originalImage.width > originalImage.height){
+        newWidth = 4000;
+        newHeight = Number((newWidth/originalImage.width) * originalImage.height);
+    } else{
+        newHeight = 4000;
+        newWidth = Number((newHeight/originalImage.height) * originalImage.width);;
+    }
     canvas.width = newWidth;
     canvas.height = newHeight
     const ctx = canvas.getContext('2d');
